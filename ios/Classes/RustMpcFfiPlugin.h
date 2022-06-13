@@ -1,0 +1,20 @@
+#import <Flutter/Flutter.h>
+
+@interface RustMpcFfiPlugin : NSObject<FlutterPlugin>
+@end
+#include <stdarg.h>
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif // __cplusplus
+
+void http_local_run(void);
+
+void wire_keygen(int64_t port_, uint16_t index);
+
+#ifdef __cplusplus
+} // extern "C"
+#endif // __cplusplus
