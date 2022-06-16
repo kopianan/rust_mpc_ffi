@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:rust_mpc_ffi_example/home_page.dart';
+import 'package:rust_mpc_ffi/lib.dart';
+
+import 'home_page.dart';
 
 void main() {
   runApp(AppWidget());
+  CBRustMpc().setup();
 }
 
 class AppWidget extends StatelessWidget {

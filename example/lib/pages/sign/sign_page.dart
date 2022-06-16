@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rust_mpc_ffi/lib.dart';
-import 'package:rust_mpc_ffi_example/pages/widgets/key_output_widget.dart';
-import 'package:rust_mpc_ffi_example/storage.dart';
+
+import '../../storage.dart';
+import '../widgets/key_output_widget.dart';
 
 class SignPage extends StatefulWidget {
   const SignPage({Key? key}) : super(key: key);
@@ -116,4 +117,4 @@ class _SignPageState extends State<SignPage> {
               ),
             )));
   }
-} 
+}

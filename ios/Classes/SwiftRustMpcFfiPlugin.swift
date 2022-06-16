@@ -14,8 +14,11 @@ public class SwiftRustMpcFfiPlugin: NSObject, FlutterPlugin {
 
   public func dummyMethodToEnforceBundling() {
     // This will never be executed
-  http_local_run( );
-  wire_keygen(1, 1);
-
+    
+    http_local_run( );
+    wire_keygen(1,1); 
+    wire_presign(1,1,[0x0, 0x0, 0x5, 0x0],1);
+    wire_sign(1, 1, [0x0, 0x0, 0x5, 0x0], 1, "");
   }
+
 }

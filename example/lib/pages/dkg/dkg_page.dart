@@ -1,8 +1,12 @@
+import 'dart:isolate';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:rust_mpc_ffi/lib.dart';
-import 'package:rust_mpc_ffi_example/pages/presign/presign_page.dart';
-import 'package:rust_mpc_ffi_example/pages/widgets/key_output_widget.dart';
-import 'package:rust_mpc_ffi_example/storage.dart';
+
+import '../../storage.dart';
+import '../presign/presign_page.dart';
+import '../widgets/key_output_widget.dart';
 
 class DkgPage extends StatefulWidget {
   const DkgPage({Key? key}) : super(key: key);
@@ -32,10 +36,11 @@ class _DkgPageState extends State<DkgPage> {
                   setState(() {
                     load1 = true;
                   });
+
                   var secret = await _cbRustMpc.proccessDkgString(1);
                   setState(() {
                     load1 = false;
-                    dkgController1.text = secret;
+                    dkgController1.text = secret.toString();
                   });
                 }),
             KeyOutputWidget(

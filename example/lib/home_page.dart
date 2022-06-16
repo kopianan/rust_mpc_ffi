@@ -1,5 +1,7 @@
+import 'dart:isolate';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:rust_mpc_ffi/lib.dart';
 import 'package:rust_mpc_ffi_example/pages/dkg/dkg_page.dart';
 
@@ -18,12 +20,13 @@ class _HomePageState extends State<HomePage> {
       sec3 = TextEditingController();
   @override
   void initState() {
-    CBRustMpc.setup();
     super.initState();
   }
 
   Uint8List? s1, s2, s3;
   dynamic? json1, json2, json3;
+  final methodChannel = MethodChannel('coinbit_secure_storage');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +45,14 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(builder: (context) => const DkgPage()));
               },
               child: const Text("GENERATE KEY MPC"),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                final results =
+                    await methodChannel.invokeMethod('makeAndStoreKey');
+                print(results);
+              },
+              child: const Text("Storage"),
             ),
           ],
         ),

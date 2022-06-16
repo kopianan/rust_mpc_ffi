@@ -1,10 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:rust_mpc_ffi/lib.dart';
-import 'package:rust_mpc_ffi_example/pages/sign/sign_page.dart';
-import 'package:rust_mpc_ffi_example/storage.dart';
+import '../../storage.dart';
+import '../sign/sign_page.dart';
 import '../widgets/key_output_widget.dart';
+import 'package:rust_mpc_ffi/lib.dart';
 
 class PresignPage extends StatefulWidget {
   const PresignPage({Key? key}) : super(key: key);
@@ -97,11 +97,14 @@ class _DefaultPresignState extends State<DefaultPresign> {
                   load1 = true;
                 });
                 var jsonData = await Storage.loadSecretKey('secret1');
+                // var jsonData = await rootBundle.loadString('asset/a.json');
                 log(jsonData.toString());
 
                 var presignKey =
                     await widget._cbRustMpc.offlineSignWithJson(1, jsonData!);
+                print("GO TO");
                 secret1.text = presignKey;
+                print("GO TO");
                 await Storage.saveSecretKey("presign1", presignKey);
                 if ((load1 && load2)) {
                   setState(() {
@@ -120,6 +123,7 @@ class _DefaultPresignState extends State<DefaultPresign> {
                   load2 = true;
                 });
                 var jsonData = await Storage.loadSecretKey('secret2');
+                // var jsonData = await rootBundle.loadString('asset/b.json');
 
                 var presignKey =
                     await widget._cbRustMpc.offlineSignWithJson(2, jsonData!);
