@@ -6,6 +6,7 @@ import 'home_page.dart';
 void main() {
   runApp(AppWidget());
   CBRustMpc().setup();
+  CBRustMpc().connectToLocalHttp();
 }
 
 class AppWidget extends StatelessWidget {

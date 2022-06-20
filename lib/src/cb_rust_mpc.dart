@@ -29,7 +29,8 @@ class CBRustMpc extends NativeMpc {
     native.wire_keygen(sendPort.nativePort, index);
     final privateKey = await completer.future;
 
-    return json.encode(json.decode(privateKey.toString())['y_sum_s']);
+    // return json.encode(json.decode(privateKey.toString())['y_sum_s']);
+    return privateKey.toString();
   }
 
   @override
