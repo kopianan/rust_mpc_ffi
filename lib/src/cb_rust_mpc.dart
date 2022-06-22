@@ -74,9 +74,9 @@ class CBRustMpc extends NativeMpc {
       response.add(e);
       if (response.length == 3) {
         var rsv = RSVModel(
-            r: response[0].toString(),
-            s: response[1].toString(),
-            v: response[2].toString());
+            r: BigInt.parse(response[0].toString()),
+            s: BigInt.parse(response[1].toString()),
+            v: int.parse(response[2].toString()) + 27);
         completer.complete(rsv);
       }
     });

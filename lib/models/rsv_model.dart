@@ -1,7 +1,7 @@
 class RSVModel {
-  final String r;
-  final String s;
-  final String v;
+  final BigInt r;
+  final BigInt s;
+  final int v;
 
   RSVModel({required this.r, required this.s, required this.v});
 
